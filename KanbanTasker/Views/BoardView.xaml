@@ -496,10 +496,11 @@
                                     </Style>
                                 </ListView.ItemContainerStyle>
                                 <FlyoutBase.AttachedFlyout>
-                                    <Flyout x:Name="tagFlyout" Placement="LeftEdgeAlignedBottom">
+                                    <Flyout x:Name="tagFlyout">
                                         <Flyout.FlyoutPresenterStyle>
                                             <Style TargetType="FlyoutPresenter">
                                                 <Setter Property="CornerRadius" Value="3" />
+                                                <Setter Property="Background" Value="{ThemeResource RegionBrush}" />
                                             </Style>
                                         </Flyout.FlyoutPresenterStyle>
                                         <Grid>
@@ -568,7 +569,7 @@
                                                     Icon="Save"
                                                     Label="Update Tag" />
                                                 <AppBarButton
-                                                    x:Name="btnUpdateTag"
+                                                    x:Name="btnDeleteTag"
                                                     Grid.Column="1"
                                                     Margin="10"
                                                     HorizontalAlignment="Center"
@@ -588,6 +589,7 @@
                                     </Flyout>
                                 </FlyoutBase.AttachedFlyout>
                                 <ListView.ItemTemplate>
+                                    <!--  Tag Template for Wrap Panel  -->
                                     <DataTemplate>
                                         <Border Background="#FFEDEDED" CornerRadius="4">
                                             <Grid>
