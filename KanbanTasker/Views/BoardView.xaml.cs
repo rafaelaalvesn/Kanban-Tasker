@@ -193,7 +193,7 @@ namespace KanbanTasker.Views
                 splitView.IsPaneOpen = false;
 
                 if(deleteSuccess)
-                    ExampleMSEdgeInAppNotification.Show("Task deleted from board successfully", 4000);
+                    kanbanInAppNotification.Show("Task deleted from board successfully", 4000);
             }
             else
                 return; 
@@ -310,7 +310,7 @@ namespace KanbanTasker.Views
                     splitView.IsPaneOpen = false;
 
                 if (addSuccess)
-                    ExampleMSEdgeInAppNotification.Show("Task successfully added to the board", 4000);
+                    kanbanInAppNotification.Show("Task successfully added to the board", 4000);
             }
         }
 
@@ -347,7 +347,12 @@ namespace KanbanTasker.Views
         {
             var btn = sender as Button;
             var tagName = btn.DataContext as string;
-            ViewModel.DeleteTag(tagName);
+
+            // Call view model helper to delete tag
+            var deleteSuccess = ViewModel.DeleteTag(tagName);
+
+            if (deleteSuccess)
+                kanbanInAppNotification.Show("Tag successfully deleted from the list", 4000);
         }
 
         private void LstViewTags_ItemClick(object sender, ItemClickEventArgs e)
@@ -360,6 +365,23 @@ namespace KanbanTasker.Views
         private void BtnCloseEditTaskFlyout_Click(object sender, RoutedEventArgs e)
         {
             tagFlyout.Hide();
+        }
+
+        private void BtnUpdateTag_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void FlyoutBtnDeleteTag_Click(object sender, RoutedEventArgs e)
+        {
+            // Hide flyout before deletion
+            tagFlyout.Hide();
+
+            // Call view model helper to delete selected tag and set back to empty
+            var deleteSuccess = ViewModel.DeleteTag();
+
+            if (deleteSuccess)
+                kanbanInAppNotification.Show("Tag successfully deleted from the list", 4000);
         }
     }
 }

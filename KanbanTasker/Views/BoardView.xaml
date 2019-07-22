@@ -601,14 +601,16 @@
                                                     Margin="10"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
+                                                    Click="BtnUpdateTag_Click"
                                                     Icon="Save"
                                                     Label="Update Tag" />
                                                 <AppBarButton
-                                                    x:Name="btnDeleteTag"
+                                                    x:Name="btnDeleteTagFlyout"
                                                     Grid.Column="1"
                                                     Margin="10"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
+                                                    Click="FlyoutBtnDeleteTag_Click"
                                                     Icon="Delete"
                                                     Label="Delete Tag" />
                                                 <AppBarButton
@@ -931,7 +933,7 @@
                 </Rectangle.Fill>
             </Rectangle>
             <controls:InAppNotification
-                x:Name="ExampleMSEdgeInAppNotification"
+                x:Name="kanbanInAppNotification"
                 Width="550"
                 HorizontalAlignment="Center"
                 VerticalAlignment="Bottom"

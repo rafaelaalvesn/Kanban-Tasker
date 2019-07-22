@@ -337,9 +337,21 @@ namespace KanbanTasker.ViewModels
             return (Tasks.Count == (previousCount + 1)) ? true : false; 
         }
 
-        public void DeleteTag(string tagName)
+        public bool DeleteTag(string tagName = "")
         {
+            var originalCount = TagsCollection.Count;
+
+            // If tag is being deleted from tag flyout
+            // Otherwise, being deleted from the tag itself in pane
+            if (SelectedTag != "")
+            {
+                tagName = SelectedTag;
+                SelectedTag = "";
+            }
+
             TagsCollection.Remove(tagName);
+
+            return (TagsCollection.Count == (originalCount - 1)) ? true : false;
         }
     }
 }
