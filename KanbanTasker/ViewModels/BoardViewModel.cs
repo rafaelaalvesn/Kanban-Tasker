@@ -25,6 +25,7 @@ namespace KanbanTasker.ViewModels
         private List<string> _categories;
         private List<string> _colorKeys;
         private string _paneTitle;
+        private string _selectedTag;
 
         //=====================================================================
         // CONSTRUCTOR
@@ -218,6 +219,16 @@ namespace KanbanTasker.ViewModels
             set
             {
                 _paneTitle = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string SelectedTag
+        {
+            get { return _selectedTag; }
+            set
+            {
+                _selectedTag = value;
                 OnPropertyChanged();
             }
         }

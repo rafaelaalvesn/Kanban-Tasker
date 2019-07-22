@@ -352,8 +352,14 @@ namespace KanbanTasker.Views
 
         private void LstViewTags_ItemClick(object sender, ItemClickEventArgs e)
         {
-            var tag = e.ClickedItem as ListViewItem;
+            var tag = e.ClickedItem.ToString();
+            ViewModel.SelectedTag = tag;
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
+
+        private void BtnCloseEditTaskFlyout_Click(object sender, RoutedEventArgs e)
+        {
+            tagFlyout.Hide();
         }
     }
 }

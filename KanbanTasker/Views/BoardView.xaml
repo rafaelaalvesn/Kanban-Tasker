@@ -511,41 +511,76 @@
                                                 <RowDefinition />
                                                 <RowDefinition />
                                             </Grid.RowDefinitions>
-                                            <StackPanel
-                                                Grid.Row="0"
-                                                Margin="0,0,0,12"
-                                                HorizontalAlignment="Center"
-                                                VerticalAlignment="Center"
-                                                Orientation="Horizontal">
-                                                <SymbolIcon Margin="4" Symbol="Tag" />
+                                            <!--  Flyout Header  -->
+                                            <StackPanel Grid.Row="0" Orientation="Vertical">
+                                                <Grid>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="Auto" />
+                                                        <ColumnDefinition />
+                                                        <ColumnDefinition Width="Auto" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <TextBlock
+                                                        Grid.Column="0"
+                                                        HorizontalAlignment="Left"
+                                                        VerticalAlignment="Center"
+                                                        FontSize="25"
+                                                        FontWeight="Bold"
+                                                        Text="Edit Tag" />
+                                                    <Button
+                                                        Grid.Column="1"
+                                                        Margin="0,8,0,0"
+                                                        HorizontalAlignment="Right"
+                                                        VerticalAlignment="Center"
+                                                        Background="Transparent"
+                                                        BorderThickness="0"
+                                                        Click="BtnCloseEditTaskFlyout_Click">
+                                                        <SymbolIcon Symbol="Cancel" />
+                                                    </Button>
+                                                </Grid>
+                                                <Border
+                                                    Width="Auto"
+                                                    Margin="0,16,0,0"
+                                                    HorizontalAlignment="Stretch"
+                                                    VerticalAlignment="Center"
+                                                    BorderBrush="Gray"
+                                                    BorderThickness="0.5" />
+                                            </StackPanel>
+                                            <Grid
+                                                Grid.Row="1"
+                                                Margin="0,12,0,12"
+                                                HorizontalAlignment="Stretch">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <SymbolIcon
+                                                    Grid.Column="0"
+                                                    Margin="4"
+                                                    Symbol="Tag" />
                                                 <TextBlock
+                                                    Grid.Column="1"
                                                     Margin="0,0,8,0"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
-                                                    Text="Tag:" />
+                                                    Text="Tag Name:" />
                                                 <TextBox
                                                     x:Name="flyoutTxtBlockTagName"
-                                                    Grid.Row="0"
-                                                    HorizontalAlignment="Center"
+                                                    Grid.Column="2"
+                                                    HorizontalAlignment="Stretch"
                                                     VerticalAlignment="Center"
                                                     BorderThickness="1"
                                                     CornerRadius="3"
-                                                    FontWeight="Bold"
-                                                    Text="Tag Name Here" />
-                                            </StackPanel>
-                                            <Border
-                                                Grid.Row="1"
-                                                Width="Auto"
-                                                Margin="0,0,0,8"
-                                                HorizontalAlignment="Stretch"
-                                                VerticalAlignment="Center"
-                                                BorderBrush="Gray"
-                                                BorderThickness="1" />
+                                                    Text="{x:Bind ViewModel.SelectedTag, Mode=OneWay}" />
+                                            </Grid>
+
                                             <ColorPicker
                                                 x:Name="tagColorPicker"
                                                 Grid.Row="2"
                                                 Margin="4"
-                                                ColorSpectrumShape="Ring" />
+                                                BorderThickness="0"
+                                                ColorSpectrumShape="Ring"
+                                                CornerRadius="3" />
                                             <Border
                                                 Grid.Row="3"
                                                 Width="Auto"
@@ -582,6 +617,7 @@
                                                     Margin="10"
                                                     HorizontalAlignment="Center"
                                                     VerticalAlignment="Center"
+                                                    Click="BtnCloseEditTaskFlyout_Click"
                                                     Icon="Cancel"
                                                     Label="Cancel" />
                                             </Grid>
@@ -591,7 +627,10 @@
                                 <ListView.ItemTemplate>
                                     <!--  Tag Template for Wrap Panel  -->
                                     <DataTemplate>
-                                        <Border Background="#FFEDEDED" CornerRadius="4">
+                                        <Border
+                                            Background="#FFEDEDED"
+                                            CornerRadius="4"
+                                            ToolTipService.ToolTip="Click to edit tag">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
