@@ -349,5 +349,11 @@ namespace KanbanTasker.Views
             var tagName = btn.DataContext as string;
             ViewModel.DeleteTag(tagName);
         }
+
+        private void LstViewTags_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            var tag = e.ClickedItem as ListViewItem;
+            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
+        }
     }
 }

@@ -464,6 +464,7 @@
                             <ListView
                                 x:Name="lstViewTags"
                                 IsItemClickEnabled="True"
+                                ItemClick="LstViewTags_ItemClick"
                                 ItemsSource="{x:Bind ViewModel.TagsCollection, Mode=OneWay}">
                                 <ItemsControl.ItemsPanel>
                                     <ItemsPanelTemplate>
@@ -494,6 +495,98 @@
                                         </Setter>
                                     </Style>
                                 </ListView.ItemContainerStyle>
+                                <FlyoutBase.AttachedFlyout>
+                                    <Flyout x:Name="tagFlyout" Placement="LeftEdgeAlignedBottom">
+                                        <Flyout.FlyoutPresenterStyle>
+                                            <Style TargetType="FlyoutPresenter">
+                                                <Setter Property="CornerRadius" Value="3" />
+                                            </Style>
+                                        </Flyout.FlyoutPresenterStyle>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                                <RowDefinition />
+                                            </Grid.RowDefinitions>
+                                            <StackPanel
+                                                Grid.Row="0"
+                                                Margin="0,0,0,12"
+                                                HorizontalAlignment="Center"
+                                                VerticalAlignment="Center"
+                                                Orientation="Horizontal">
+                                                <SymbolIcon Margin="4" Symbol="Tag" />
+                                                <TextBlock
+                                                    Margin="0,0,8,0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Text="Tag:" />
+                                                <TextBox
+                                                    x:Name="flyoutTxtBlockTagName"
+                                                    Grid.Row="0"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    BorderThickness="1"
+                                                    CornerRadius="3"
+                                                    FontWeight="Bold"
+                                                    Text="Tag Name Here" />
+                                            </StackPanel>
+                                            <Border
+                                                Grid.Row="1"
+                                                Width="Auto"
+                                                Margin="0,0,0,8"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Center"
+                                                BorderBrush="Gray"
+                                                BorderThickness="1" />
+                                            <ColorPicker
+                                                x:Name="tagColorPicker"
+                                                Grid.Row="2"
+                                                Margin="4"
+                                                ColorSpectrumShape="Ring" />
+                                            <Border
+                                                Grid.Row="3"
+                                                Width="Auto"
+                                                Margin="0,8,0,8"
+                                                HorizontalAlignment="Stretch"
+                                                VerticalAlignment="Center"
+                                                BorderBrush="Gray"
+                                                BorderThickness="1" />
+                                            <Grid Grid.Row="4">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <AppBarButton
+                                                    x:Name="btnUpdateTag"
+                                                    Grid.Column="0"
+                                                    Margin="10"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Icon="Save"
+                                                    Label="Update Tag" />
+                                                <AppBarButton
+                                                    x:Name="btnUpdateTag"
+                                                    Grid.Column="1"
+                                                    Margin="10"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Icon="Delete"
+                                                    Label="Delete Tag" />
+                                                <AppBarButton
+                                                    x:Name="btnCancelTagEdit"
+                                                    Grid.Column="2"
+                                                    Margin="10"
+                                                    HorizontalAlignment="Center"
+                                                    VerticalAlignment="Center"
+                                                    Icon="Cancel"
+                                                    Label="Cancel" />
+                                            </Grid>
+                                        </Grid>
+                                    </Flyout>
+                                </FlyoutBase.AttachedFlyout>
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <Border Background="#FFEDEDED" CornerRadius="4">
