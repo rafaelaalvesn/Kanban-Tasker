@@ -483,7 +483,7 @@
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="Padding" Value="0" />
                                         <Setter Property="Margin" Value="0" />
-                                        <Setter Property="Background" Value="{x:Bind tagColorPicker.Color, Mode=OneWay}" />
+                                        <Setter Property="Background" Value="{x:Bind ViewModel.TagBackground, Mode=OneWay}" />
                                         <Setter Property="MinHeight" Value="0" />
                                         <Setter Property="Foreground" Value="{x:Bind ViewModel.TagForeground, Mode=OneWay}" />
                                         <Setter Property="MinWidth" Value="0" />

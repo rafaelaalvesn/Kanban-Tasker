@@ -406,7 +406,8 @@ namespace KanbanTasker.Views
 
         private void TagColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
         {
-            
+            ViewModel.TagBackground = sender.Color;
+
             var color = Color.FromArgb(sender.Color.A, sender.Color.R, sender.Color.G, sender.Color.B);
 
             // 255,255,255 = White and 0,0,0 = Black

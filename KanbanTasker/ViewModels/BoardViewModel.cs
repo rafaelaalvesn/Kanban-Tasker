@@ -28,6 +28,7 @@ namespace KanbanTasker.ViewModels
         private string _paneTitle;
         private string _selectedTag;
         private SolidColorBrush _tagForeground;
+        private Windows.UI.Color _tagBackground;
 
         //=====================================================================
         // CONSTRUCTOR
@@ -246,6 +247,16 @@ namespace KanbanTasker.ViewModels
             set
             {
                 _tagForeground = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public Windows.UI.Color TagBackground
+        {
+            get { return _tagBackground; }
+            set
+            {
+                _tagBackground = value;
                 OnPropertyChanged();
             }
         }
