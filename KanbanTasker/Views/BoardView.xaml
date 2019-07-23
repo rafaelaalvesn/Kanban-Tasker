@@ -295,9 +295,13 @@
                 <!--
             </CommandBarFlyout.SecondaryCommands>-->
             </CommandBarFlyout>
-            <!--<ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Resources\ThemeDictionary.xaml" />
-            </ResourceDictionary.MergedDictionaries>-->
+            <CommandBarFlyout x:Name="paneTagContext" Placement="Right">
+                <AppBarButton
+                    Click="BtnDeleteTag_Click"
+                    Icon="Delete"
+                    Label="Delete"
+                    ToolTipService.ToolTip="Delete" />
+            </CommandBarFlyout>
         </ResourceDictionary>
     </UserControl.Resources>
 
@@ -464,7 +468,6 @@
                         <Grid>
                             <ListView
                                 x:Name="lstViewTags"
-                                Foreground="Blue"
                                 IsItemClickEnabled="True"
                                 ItemClick="LstViewTags_ItemClick"
                                 ItemsSource="{x:Bind ViewModel.TagsCollection, Mode=OneWay}">
@@ -634,8 +637,12 @@
                                 </FlyoutBase.AttachedFlyout>
                                 <ListView.ItemTemplate>
                                     <!--  Tag Template for Wrap Panel  -->
-                                    <DataTemplate>
-                                        <Border CornerRadius="4" ToolTipService.ToolTip="Click to edit tag">
+                                    <DataTemplate x:Name="TagItemDataTemplate">
+                                        <Border
+                                            x:Name="TagBorder"
+                                            CornerRadius="4"
+                                            RightTapped="TagBorder_RightTapped"
+                                            ToolTipService.ToolTip="Click to edit tag">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -652,14 +659,22 @@
                                                     Text="{Binding}"
                                                     TextTrimming="None"
                                                     TextWrapping="Wrap" />
-                                                <Button
+                                                <!--<Button
+                                                    x:Name="btnDeleteTagIcon"
                                                     Grid.Column="1"
                                                     HorizontalAlignment="Right"
+                                                    Background="{StaticResource RegionBrush}"
                                                     Click="BtnDeleteTag_Click"
-                                                    Content="&#xE74D;"
                                                     CornerRadius="2"
-                                                    FontFamily="Segoe MDL2 Assets">
-                                                    <Button.Resources>
+                                                    Foreground="{Binding}">
+                                                    <Button.Style>
+                                                        <Style TargetType="Button">
+                                                            <Setter Property="Foreground" Value="{Binding}" />
+                                                        </Style>
+                                                    </Button.Style>
+                                                    <SymbolIcon Symbol="Delete" />
+                                                -->
+                                                <!--<Button.Resources>
                                                         <ResourceDictionary>
                                                             <ResourceDictionary.ThemeDictionaries>
                                                                 <ResourceDictionary x:Key="Dark">
@@ -670,8 +685,9 @@
                                                                 </ResourceDictionary>
                                                             </ResourceDictionary.ThemeDictionaries>
                                                         </ResourceDictionary>
-                                                    </Button.Resources>
-                                                </Button>
+                                                    </Button.Resources>-->
+                                                <!--
+                                                </Button>-->
                                             </Grid>
                                         </Border>
                                     </DataTemplate>

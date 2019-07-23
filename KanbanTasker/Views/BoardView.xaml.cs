@@ -296,23 +296,25 @@ namespace KanbanTasker.Views
                 if (tags == "")
                     tags = null;
 
-                // To allow a draft task, require user to have category and colorkey chosen
-                if (comboBoxCategories.SelectedItem == null || comboBoxColorKey.SelectedItem == null)
-                {
-                    var messageDialog = new MessageDialog("NOTE: You must fill out a category and color key to be able to create a draft task", "ERROR");
-                    await messageDialog.ShowAsync();
-                }
-
                 var selectedCategory = comboBoxCategories.SelectedItem;
                 var selectedColorKey = comboBoxColorKey.SelectedItem;
-                var addSuccess = ViewModel.AddTask(tags, selectedCategory, selectedColorKey);
 
                 // Close pane when done
                 if (splitView.IsPaneOpen == true)
                     splitView.IsPaneOpen = false;
 
+                bool addSuccess = false;
+
+                // Task requires category and color key
+                if (selectedCategory == null || selectedColorKey == null)
+                    addSuccess = false;
+                else
+                    addSuccess = ViewModel.AddTask(tags, selectedCategory, selectedColorKey);
+
                 if (addSuccess)
                     kanbanInAppNotification.Show("Task successfully added to the board", 4000);
+                else
+                    kanbanInAppNotification.Show("Task creation failed. Category and Color Key not chosen", 4000);
             }
         }
 
@@ -404,6 +406,7 @@ namespace KanbanTasker.Views
 
         private void TagColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
         {
+            
             var color = Color.FromArgb(sender.Color.A, sender.Color.R, sender.Color.G, sender.Color.B);
 
             // 255,255,255 = White and 0,0,0 = Black
@@ -415,11 +418,23 @@ namespace KanbanTasker.Views
             if (sumRGB <= MIDDLE)          // Darker Background
             {
                 ViewModel.TagForeground = new SolidColorBrush(Colors.White); // Set to white text
+                //btnDeleteTagIcon.Foreground = new SolidColorBrush(Colors.White);
             }
             else if (sumRGB > MIDDLE)     // Lighter Background
             {
                 ViewModel.TagForeground = new SolidColorBrush(Colors.Black); // Set to black text
+              //  btnDeleteTagIcon.Foreground = new SolidColorBrush(Colors.White);
             }
+        }
+
+        private void TagBorder_RightTapped(object sender, RightTappedRoutedEventArgs e)
+        {
+            var tagElement = (FrameworkElement)sender;
+            var tagName = tagElement.DataContext;
+
+            FlyoutShowOptions myOption = new FlyoutShowOptions();
+            myOption.ShowMode = FlyoutShowMode.Transient;
+            paneTagContext.ShowAt(tagElement, myOption);
         }
     }
 }

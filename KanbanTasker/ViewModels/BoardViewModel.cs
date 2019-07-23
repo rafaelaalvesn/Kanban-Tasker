@@ -334,6 +334,10 @@ namespace KanbanTasker.ViewModels
                 Tags = tagsArray
             };
 
+            if (selectedCategory == null)
+                selectedCategory = "";
+            if (selectedColorKey == null)
+                selectedColorKey = "";
 
             // Add task to database
             int newTaskID = DataProvider.AddTask(BoardId, Title,
