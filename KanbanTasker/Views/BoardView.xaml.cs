@@ -388,11 +388,10 @@ namespace KanbanTasker.Views
                 kanbanInAppNotification.Show("Tag successfully deleted from the list", 4000);
         }
 
-        //******************************************************************************************************************************
-        // ConvertToRGB - Accepts a Color object as its parameter. Gets the RGB values of the object passed to it, calculates the sum. *
-        //******************************************************************************************************************************
         private int ConvertToRGB(Windows.UI.Color c)
         {
+            // Gets RGB values of object passed and calculates sum
+
             int r = c.R, // RED component value
                 g = c.G, // GREEN component value
                 b = c.B; // BLUE component value
@@ -419,12 +418,10 @@ namespace KanbanTasker.Views
             if (sumRGB <= MIDDLE)          // Darker Background
             {
                 ViewModel.TagForeground = new SolidColorBrush(Colors.White); // Set to white text
-                //btnDeleteTagIcon.Foreground = new SolidColorBrush(Colors.White);
             }
             else if (sumRGB > MIDDLE)     // Lighter Background
             {
                 ViewModel.TagForeground = new SolidColorBrush(Colors.Black); // Set to black text
-              //  btnDeleteTagIcon.Foreground = new SolidColorBrush(Colors.White);
             }
         }
 
