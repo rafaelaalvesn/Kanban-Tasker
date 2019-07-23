@@ -9,6 +9,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:syncfusion="using:Syncfusion.UI.Xaml.Kanban"
     xmlns:textconverters="using:KanbanTasker.Converters.Text"
+    xmlns:viewmodels="using:KanbanTasker.ViewModels"
     mc:Ignorable="d">
     <UserControl.Resources>
         <ResourceDictionary>
@@ -463,6 +464,7 @@
                         <Grid>
                             <ListView
                                 x:Name="lstViewTags"
+                                Foreground="Blue"
                                 IsItemClickEnabled="True"
                                 ItemClick="LstViewTags_ItemClick"
                                 ItemsSource="{x:Bind ViewModel.TagsCollection, Mode=OneWay}">
@@ -478,7 +480,9 @@
                                     <Style TargetType="ListViewItem">
                                         <Setter Property="Padding" Value="0" />
                                         <Setter Property="Margin" Value="0" />
+                                        <Setter Property="Background" Value="{x:Bind tagColorPicker.Color, Mode=OneWay}" />
                                         <Setter Property="MinHeight" Value="0" />
+                                        <Setter Property="Foreground" Value="{x:Bind ViewModel.TagForeground, Mode=OneWay}" />
                                         <Setter Property="MinWidth" Value="0" />
                                         <Setter Property="BorderThickness" Value="0" />
                                         <Setter Property="Height" Value="Auto" />
@@ -489,7 +493,8 @@
                                                         Margin="1"
                                                         Padding="0"
                                                         BorderThickness="0"
-                                                        ContentMargin="0" />
+                                                        ContentMargin="0"
+                                                        CornerRadius="3" />
                                                 </ControlTemplate>
                                             </Setter.Value>
                                         </Setter>
@@ -579,6 +584,7 @@
                                                 Grid.Row="2"
                                                 Margin="4"
                                                 BorderThickness="0"
+                                                ColorChanged="TagColorPicker_ColorChanged"
                                                 ColorSpectrumShape="Ring"
                                                 CornerRadius="3" />
                                             <Border
@@ -629,10 +635,7 @@
                                 <ListView.ItemTemplate>
                                     <!--  Tag Template for Wrap Panel  -->
                                     <DataTemplate>
-                                        <Border
-                                            Background="#FFEDEDED"
-                                            CornerRadius="4"
-                                            ToolTipService.ToolTip="Click to edit tag">
+                                        <Border CornerRadius="4" ToolTipService.ToolTip="Click to edit tag">
                                             <Grid>
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="Auto" />
@@ -645,7 +648,7 @@
                                                     HorizontalAlignment="Right"
                                                     VerticalAlignment="Center"
                                                     FontSize="12"
-                                                    Foreground="#FF454545"
+                                                    FontWeight="Bold"
                                                     Text="{Binding}"
                                                     TextTrimming="None"
                                                     TextWrapping="Wrap" />
@@ -655,13 +658,12 @@
                                                     Click="BtnDeleteTag_Click"
                                                     Content="&#xE74D;"
                                                     CornerRadius="2"
-                                                    FontFamily="Segoe MDL2 Assets"
-                                                    Foreground="Black">
+                                                    FontFamily="Segoe MDL2 Assets">
                                                     <Button.Resources>
                                                         <ResourceDictionary>
                                                             <ResourceDictionary.ThemeDictionaries>
                                                                 <ResourceDictionary x:Key="Dark">
-                                                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="#C0C0C0" />
+                                                                    <SolidColorBrush x:Key="ButtonBackgroundPointerOver" Color="Transparent" />
                                                                     <SolidColorBrush x:Key="ButtonForegroundPointerOver" Color="Black" />
                                                                     <SolidColorBrush x:Key="ButtonBackgroundPressed" Color="#A9A9A9" />
                                                                     <SolidColorBrush x:Key="ButtonForegroundPressed" Color="Black" />

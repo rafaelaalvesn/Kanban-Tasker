@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml.Media;
 
 namespace KanbanTasker.ViewModels
 {
@@ -26,6 +27,7 @@ namespace KanbanTasker.ViewModels
         private List<string> _colorKeys;
         private string _paneTitle;
         private string _selectedTag;
+        private SolidColorBrush _tagForeground;
 
         //=====================================================================
         // CONSTRUCTOR
@@ -237,6 +239,15 @@ namespace KanbanTasker.ViewModels
         {
             get;
             set;
+        }
+        public SolidColorBrush TagForeground
+        {
+            get { return _tagForeground; }
+            set
+            {
+                _tagForeground = value;
+                OnPropertyChanged();
+            }
         }
 
         //=====================================================================

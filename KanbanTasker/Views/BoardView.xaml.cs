@@ -5,6 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Windows.UI;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
@@ -26,7 +27,8 @@ namespace KanbanTasker.Views
 {
     public sealed partial class BoardView : UserControl
     {
-
+        private int sumRGB;
+        const int MIDDLE = 382;    // middle sum of RGB - max is 765
         public BoardViewModel ViewModel { get; set; }
         public CustomKanbanModel SelectedModel { get; set; }
 
@@ -382,6 +384,42 @@ namespace KanbanTasker.Views
 
             if (deleteSuccess)
                 kanbanInAppNotification.Show("Tag successfully deleted from the list", 4000);
+        }
+
+        //******************************************************************************************************************************
+        // ConvertToRGB - Accepts a Color object as its parameter. Gets the RGB values of the object passed to it, calculates the sum. *
+        //******************************************************************************************************************************
+        private int ConvertToRGB(Windows.UI.Color c)
+        {
+            int r = c.R, // RED component value
+                g = c.G, // GREEN component value
+                b = c.B; // BLUE component value
+            int sum = 0;
+
+            // calculate sum of RGB
+            sum = r + g + b;
+
+            return sum;
+        }
+
+        private void TagColorPicker_ColorChanged(ColorPicker sender, ColorChangedEventArgs args)
+        {
+            var color = Color.FromArgb(sender.Color.A, sender.Color.R, sender.Color.G, sender.Color.B);
+
+            // 255,255,255 = White and 0,0,0 = Black
+            // Max sum of RGB values is 765 -> (255 + 255 + 255)
+            // Middle sum of RGB values is 382 -> (765/2)
+            // Color is considered darker if its <= 382
+            // Color is considered lighter if its > 382
+            sumRGB = ConvertToRGB(color);    // get the color objects sum of the RGB value
+            if (sumRGB <= MIDDLE)          // Darker Background
+            {
+                ViewModel.TagForeground = new SolidColorBrush(Colors.White); // Set to white text
+            }
+            else if (sumRGB > MIDDLE)     // Lighter Background
+            {
+                ViewModel.TagForeground = new SolidColorBrush(Colors.Black); // Set to black text
+            }
         }
     }
 }
