@@ -28,21 +28,28 @@
                     <RowDefinition Height="40" />
                     <RowDefinition Height="40" />
                 </Grid.RowDefinitions>
-                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.ColumnSpan="2">
+                <StackPanel 
+                    Orientation="Vertical" 
+                    Grid.Row="0" 
+                    Grid.ColumnSpan="2">
                     <TextBlock Text="About" FontSize="28" />
-                    <Border BorderThickness="0.25" HorizontalAlignment="Stretch" BorderBrush="Gray" />
+                    <Border 
+                        BorderThickness="0.25" 
+                        HorizontalAlignment="Stretch" 
+                        BorderBrush="Gray" />
                 </StackPanel>
                 <Image
                     Height="65"
                     Grid.Row="1"
                     Grid.RowSpan="2"
-                    Margin="8"
+                    Margin="0 8 8 8"
                     HorizontalAlignment="Center"
                     Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png"
                     Stretch="Uniform" />
 
                 <TextBlock
                     x:Uid="AppName"
+                    Margin="0 8 0 0"
                     Grid.Row="1"
                     Grid.Column="1"
                     VerticalAlignment="Center"
@@ -52,11 +59,11 @@
                 <TextBlock
                     Grid.Column="1"
                     Grid.Row="2"
-                    FontSize="14"
-                    VerticalAlignment="Center"
+                    FontSize="16"
+                    VerticalAlignment="Top"
                     HorizontalAlignment="Left"
-                    Margin="0,4,0,0"
-                    Text="Version 1.0.6.0" />
+                    Margin="0,6,0,0"
+                    Text="v1.0.6.0" />
             </Grid>
 
             <TextBlock
@@ -85,23 +92,23 @@
                 NavigateUri="https://github.com/hjohnson12/Kanban-Tasker/issues" />
 
             <HyperlinkButton
-                x:Uid="PrivacyPolicy"
-                Padding="0,12,0,0"
-                Content="Privacy Policy"
-                NavigateUri="https://github.com/UWPCommunity/Quick-Pad/blob/master/PrivacyPolicy.md" />
-
-            <HyperlinkButton
                 HorizontalAlignment="Left"
                 Padding="0,12,0,0"
                 Content="Feedback"
                 NavigateUri="https://feedback.userreport.com/7d4ef159-95d2-4cf0-a068-b50adbe514a6/#ideas/popular"  />
+            
             <HyperlinkButton
                 HorizontalAlignment="Left"
                 Padding="0,12,0,0"
                 Content="Rate and Review"
                 NavigateUri="https://www.microsoft.com/store/apps/9NMKTDZ3L9LQ" />
 
-            <Button x:Name="btnViewUpdates" CornerRadius="4" Content="View Updates" Click="btnViewUpdates_Click" Margin="0 12 0 0" />
+            <Button 
+                x:Name="btnViewUpdates" 
+                CornerRadius="2" 
+                Content="View Updates" 
+                Click="btnViewUpdates_Click" 
+                Margin="0 18 0 0" />
 
         </StackPanel>
 

@@ -9,6 +9,7 @@
     xmlns:muxc1="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
     Style="{ThemeResource SettingsDialogStyle}"
+    CornerRadius="4"
     PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
     SecondaryButtonClick="ContentDialog_SecondaryButtonClick">
 
