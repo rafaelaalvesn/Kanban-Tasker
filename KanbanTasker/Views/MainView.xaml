@@ -55,6 +55,7 @@
                 Text="{x:Bind ViewModel.CurrentBoard.Board.Name, Mode=OneWay}" />
         </Grid>
         <!--  MenuItemsSource="{x:Bind ViewModel.BoardList, Mode=OneWay}"  -->
+        
         <NavigationView
             x:Name="kanbanNavView"
             Grid.Row="1"
@@ -194,12 +195,34 @@
                     ToolTipService.ToolTip="Create new board" />
 
             </NavigationView.PaneCustomContent>
-            <Grid>
-                <Frame
+            <SplitView x:Name="SettingsSplitView" DisplayMode="Overlay" PanePlacement="Right">
+                <SplitView.Pane>
+                    <muxc:NavigationView ItemInvoked="nvSample_ItemInvoked" IsPaneOpen="False" x:Name="nvSample" PaneDisplayMode="Left" IsSettingsVisible="False" IsBackEnabled="True">
+                        <muxc:NavigationView.MenuItems>
+                            <!--<muxc:NavigationViewItem Icon="Play" Content="Menu Item1" Tag="SamplePage1" />
+                            <muxc:NavigationViewItem Icon="Save" Content="Menu Item2" Tag="SamplePage2" />
+                            <muxc:NavigationViewItem Icon="Refresh" Content="Menu Item3" Tag="SamplePage3" />-->
+                            <muxc:NavigationViewItem x:Name="AboutPage" Content="About" Tag="About">
+                                <muxc:NavigationViewItem.Icon>
+                                    <FontIcon Glyph="&#xE946;" />
+                                </muxc:NavigationViewItem.Icon>
+                            </muxc:NavigationViewItem>
+                        </muxc:NavigationView.MenuItems>
+                        <ScrollViewer Margin="0,0,0,0">
+                            <Frame
+                            x:Name="SettingsFrame"
+                            Height="Auto"
+                            HorizontalAlignment="Stretch"
+                            VerticalAlignment="Stretch" />
+                        </ScrollViewer>
+                    </muxc:NavigationView>
+                </SplitView.Pane>
+                <Grid>
+                    <Frame
                     x:Name="contentFrame"
                     VerticalAlignment="Stretch"
                     Background="{ThemeResource RegionBrush}" />
-                <controls:InAppNotification
+                    <controls:InAppNotification
                     x:Name="KanbanInAppNotification"
                     Grid.Row="1"
                     Width="550"
@@ -207,7 +230,9 @@
                     VerticalAlignment="Bottom"
                     BorderThickness="1"
                     Style="{StaticResource CustomKanbanInAppNotificationStyle}" />
-            </Grid>
+                </Grid>
+            </SplitView>
+            
         </NavigationView>
         <ContentDialog />
     </Grid>

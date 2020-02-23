@@ -1,0 +1,109 @@
+﻿<Page
+    x:Class="KanbanTasker.Views.AboutPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:KanbanTasker.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource NavigationViewExpandedPaneBackground}">
+
+    <Grid Margin="12" Background="{ThemeResource NavigationViewExpandedPaneBackground}">
+        <Grid.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="Margin" Value="0,8,0,4" />
+                <Setter Property="TextWrapping" Value="Wrap" />
+                <Setter Property="FontFamily" Value="Segoe UI" />
+            </Style>
+        </Grid.Resources>
+
+        <StackPanel>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="80" />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60" />
+                    <RowDefinition Height="40" />
+                    <RowDefinition Height="40" />
+                </Grid.RowDefinitions>
+                <StackPanel Orientation="Vertical" Grid.Row="0" Grid.ColumnSpan="2">
+                    <TextBlock Text="About" FontSize="28" />
+                    <Border BorderThickness="0.25" HorizontalAlignment="Stretch" BorderBrush="LightGray" />
+                </StackPanel>
+                <Image
+                    Height="65"
+                    Grid.Row="1"
+                    Grid.RowSpan="2"
+                    Margin="8"
+                    HorizontalAlignment="Center"
+                    Source="ms-appx:///Assets/Square44x44Logo.targetsize-256.png"
+                    Stretch="Uniform" />
+
+                <TextBlock
+                    x:Uid="AppName"
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    VerticalAlignment="Center"
+                    Padding="12,0,0,0"
+                    FontSize="22"
+                    Text="Kanban Tasker" />
+                <TextBlock
+                    Grid.Column="1"
+                    Grid.Row="2"
+                    FontSize="14"
+                    VerticalAlignment="Center"
+                    HorizontalAlignment="Center"
+                    Margin="0,8,0,0"
+                    Text="Version 1.0.6.0" />
+            </Grid>
+
+            <TextBlock
+                x:Uid="CreatedBy"
+                Padding="0,12,0,0"
+                HorizontalAlignment="Left"
+                FontSize="14"
+                Text="Developed by Hunter Johnson" />
+            <TextBlock
+                Padding="0,12,0,0"
+                HorizontalAlignment="Left"
+                FontSize="14"
+                Text="Icon design by Yoshi Askharoun" />
+            
+            <HyperlinkButton
+                x:Uid="SourceCode"
+                Padding="0,20,0,0"
+                Content="Source Code"
+                NavigateUri="https://github.com/hjohnson12/Kanban-Tasker" />
+
+            <HyperlinkButton
+                x:Uid="ReportIssues"
+                Padding="0,12,0,0"
+                HorizontalAlignment="Left"
+                Content="Report issues here"
+                NavigateUri="https://github.com/hjohnson12/Kanban-Tasker/issues" />
+
+            <HyperlinkButton
+                x:Uid="PrivacyPolicy"
+                Padding="0,12,0,0"
+                Content="Privacy Policy"
+                NavigateUri="https://github.com/UWPCommunity/Quick-Pad/blob/master/PrivacyPolicy.md" />
+
+            <HyperlinkButton
+                HorizontalAlignment="Left"
+                Padding="0,12,0,0"
+                Content="Feedback"
+                NavigateUri="https://feedback.userreport.com/7d4ef159-95d2-4cf0-a068-b50adbe514a6/#ideas/popular"  />
+            <HyperlinkButton
+                HorizontalAlignment="Left"
+                Padding="0,12,0,0"
+                Content="Rate and Review"
+                NavigateUri="https://www.microsoft.com/store/apps/9NMKTDZ3L9LQ" />
+
+            <Button x:Name="btnViewUpdates" CornerRadius="4" Content="View Updates" Click="btnViewUpdates_Click" Margin="0 12 0 0" />
+
+        </StackPanel>
+
+    </Grid>
+</Page>

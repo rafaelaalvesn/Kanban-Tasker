@@ -5,6 +5,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Media;
+using Windows.UI.Xaml.Navigation;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -29,8 +30,9 @@ namespace KanbanTasker.Views
 
         private async void BtnSettings_Click(object sender, RoutedEventArgs e)
         {
-            var dialog = new SettingsView();
-            var result = await dialog.ShowAsync();
+            //var dialog = new SettingsView();
+            //var result = await dialog.ShowAsync();
+            SettingsSplitView.IsPaneOpen = true;
         }
 
         // This is a hack - works for the moment but there are other ways to show / hide flyouts
@@ -77,6 +79,23 @@ namespace KanbanTasker.Views
                 btnCompactOverlay.Icon = new SymbolIcon((Symbol)0xE8A7);
                 await view.TryEnterViewModeAsync(ApplicationViewMode.Default);
             }
+        }
+
+        private void nvSample_ItemInvoked(NavigationView sender, NavigationViewItemInvokedEventArgs args)
+        {
+            FrameNavigationOptions navOptions = new FrameNavigationOptions();
+            navOptions.TransitionInfoOverride = args.RecommendedNavigationTransitionInfo;
+            if (sender.PaneDisplayMode == NavigationViewPaneDisplayMode.Left)
+            {
+                navOptions.IsNavigationStackEnabled = true;
+            }
+            Type pageType = null;
+            if (args.InvokedItemContainer == AboutPage)
+            {
+                pageType = typeof(AboutPage);
+            }
+            SettingsFrame.NavigateToType(pageType, null, navOptions);
+
         }
     }
 }
