@@ -30,7 +30,7 @@
                 </Grid.RowDefinitions>
                 <StackPanel Orientation="Vertical" Grid.Row="0" Grid.ColumnSpan="2">
                     <TextBlock Text="About" FontSize="28" />
-                    <Border BorderThickness="0.25" HorizontalAlignment="Stretch" BorderBrush="LightGray" />
+                    <Border BorderThickness="0.25" HorizontalAlignment="Stretch" BorderBrush="Gray" />
                 </StackPanel>
                 <Image
                     Height="65"
@@ -46,7 +46,7 @@
                     Grid.Row="1"
                     Grid.Column="1"
                     VerticalAlignment="Center"
-                    Padding="12,0,0,0"
+                    HorizontalAlignment="Left"
                     FontSize="22"
                     Text="Kanban Tasker" />
                 <TextBlock
@@ -54,8 +54,8 @@
                     Grid.Row="2"
                     FontSize="14"
                     VerticalAlignment="Center"
-                    HorizontalAlignment="Center"
-                    Margin="0,8,0,0"
+                    HorizontalAlignment="Left"
+                    Margin="0,4,0,0"
                     Text="Version 1.0.6.0" />
             </Grid>
 
@@ -66,7 +66,7 @@
                 FontSize="14"
                 Text="Developed by Hunter Johnson" />
             <TextBlock
-                Padding="0,12,0,0"
+                Padding="0,8,0,0"
                 HorizontalAlignment="Left"
                 FontSize="14"
                 Text="Icon design by Yoshi Askharoun" />

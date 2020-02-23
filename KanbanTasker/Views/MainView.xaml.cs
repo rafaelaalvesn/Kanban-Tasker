@@ -97,5 +97,11 @@ namespace KanbanTasker.Views
             SettingsFrame.NavigateToType(pageType, null, navOptions);
 
         }
+
+        private void nvSample_BackRequested(NavigationView sender, NavigationViewBackRequestedEventArgs args)
+        {
+            AboutPage.IsSelected = true;
+            sender.IsPaneOpen = false;
+        }
     }
 }
