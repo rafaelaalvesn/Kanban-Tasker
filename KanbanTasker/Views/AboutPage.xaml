@@ -34,6 +34,7 @@
                     Grid.ColumnSpan="2">
                     <TextBlock Text="About" FontSize="28" />
                     <Border 
+                        Margin="0 6 0 0"
                         BorderThickness="0.25" 
                         HorizontalAlignment="Stretch" 
                         BorderBrush="Gray" />
