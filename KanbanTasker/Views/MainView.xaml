@@ -197,11 +197,8 @@
             </NavigationView.PaneCustomContent>
             <SplitView x:Name="SettingsSplitView" DisplayMode="Overlay" PanePlacement="Right">
                 <SplitView.Pane>
-                    <muxc:NavigationView ItemInvoked="nvSample_ItemInvoked" BackRequested="nvSample_BackRequested" IsPaneOpen="False" x:Name="nvSample" PaneDisplayMode="Left" IsSettingsVisible="False" IsBackEnabled="True">
+                    <muxc:NavigationView ItemInvoked="nvSample_ItemInvoked" BackRequested="nvSample_BackRequested" IsPaneOpen="False" x:Name="nvSample" OpenPaneLength="150" PaneDisplayMode="LeftCompact" IsSettingsVisible="False" IsBackEnabled="True">
                         <muxc:NavigationView.MenuItems>
-                            <!--<muxc:NavigationViewItem Icon="Play" Content="Menu Item1" Tag="SamplePage1" />
-                            <muxc:NavigationViewItem Icon="Save" Content="Menu Item2" Tag="SamplePage2" />
-                            <muxc:NavigationViewItem Icon="Refresh" Content="Menu Item3" Tag="SamplePage3" />-->
                             <muxc:NavigationViewItem x:Name="AboutPage" IsSelected="True" Content="About" Tag="About">
                                 <muxc:NavigationViewItem.Icon>
                                     <FontIcon Glyph="&#xE946;" />
